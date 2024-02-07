@@ -1,0 +1,22 @@
+@RFETest.WebApi_HostAddress = http://localhost:5176
+
+POST {{RFETest.WebApi_HostAddress}}/v1/diff/testid/left
+Accept: application/json
+Content-Type: application/custom
+
+eyJpbnB1dCI6InRlc3RWYWx1ZSJ9
+
+###
+
+POST {{RFETest.WebApi_HostAddress}}/v1/diff/testid/right
+Accept: application/json
+Content-Type: application/custom
+
+eyJpbnB1dCI6InRlc3RWYWx1ZSJ9
+
+###
+
+GET {{RFETest.WebApi_HostAddress}}/v1/diff/testid
+Accept: application/json
+
+###

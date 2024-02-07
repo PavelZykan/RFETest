@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RFETest.WebApi", "RFETest.WebApi\RFETest.WebApi.csproj", "{58BFAFE0-2E9F-4DDE-9B75-7090F21153DA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RFETest.Core", "RFETest.Core\RFETest.Core.csproj", "{5F758EBA-D9E0-4179-B7C0-6DAD7334FAAA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RFETest.Core.Tests", "RFETest.Core.Tests\RFETest.Core.Tests.csproj", "{20D23CF9-6AFC-42E7-8882-DC6173C83752}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RFETest.WebContracts", "RFETest.WebContracts\RFETest.WebContracts.csproj", "{D30A462E-C484-4AC2-8099-CEEE450509FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFETest.WebApi.IntegrationTests", "RFETest.WebApi.IntegrationTests\RFETest.WebApi.IntegrationTests.csproj", "{84F3459A-EF11-45E4-9E40-E486F437B15B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFETest.Utils", "RFETest.Utils\RFETest.Utils.csproj", "{E7DA3EEA-4C20-4D1E-A881-AD8D25F58EBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58BFAFE0-2E9F-4DDE-9B75-7090F21153DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58BFAFE0-2E9F-4DDE-9B75-7090F21153DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58BFAFE0-2E9F-4DDE-9B75-7090F21153DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58BFAFE0-2E9F-4DDE-9B75-7090F21153DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F758EBA-D9E0-4179-B7C0-6DAD7334FAAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F758EBA-D9E0-4179-B7C0-6DAD7334FAAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F758EBA-D9E0-4179-B7C0-6DAD7334FAAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F758EBA-D9E0-4179-B7C0-6DAD7334FAAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20D23CF9-6AFC-42E7-8882-DC6173C83752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20D23CF9-6AFC-42E7-8882-DC6173C83752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20D23CF9-6AFC-42E7-8882-DC6173C83752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20D23CF9-6AFC-42E7-8882-DC6173C83752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D30A462E-C484-4AC2-8099-CEEE450509FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D30A462E-C484-4AC2-8099-CEEE450509FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D30A462E-C484-4AC2-8099-CEEE450509FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D30A462E-C484-4AC2-8099-CEEE450509FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84F3459A-EF11-45E4-9E40-E486F437B15B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84F3459A-EF11-45E4-9E40-E486F437B15B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84F3459A-EF11-45E4-9E40-E486F437B15B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84F3459A-EF11-45E4-9E40-E486F437B15B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7DA3EEA-4C20-4D1E-A881-AD8D25F58EBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7DA3EEA-4C20-4D1E-A881-AD8D25F58EBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7DA3EEA-4C20-4D1E-A881-AD8D25F58EBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7DA3EEA-4C20-4D1E-A881-AD8D25F58EBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ABAABF15-2C65-4773-9B0D-1911CD9403EC}
+	EndGlobalSection
+EndGlobal
