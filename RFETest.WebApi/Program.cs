@@ -29,14 +29,19 @@ builder.Services
     .AddJsonOptions(opt => opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 builder.Services.AddEndpointsApiExplorer();
+
+// swagger
 builder.Services.AddSwaggerGen(setup =>
 {
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     setup.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
+
+// core services
 builder.Services.AddSingleton<IDiffValueStorage, InMemoryDiffValueStorage>();
 builder.Services.AddSingleton<IDiffProvider, DiffProvider>();
 
+// automapper
 var mapperConfiguration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(Program).Assembly));
 mapperConfiguration.CompileMappings();
 builder.Services.AddSingleton(mapperConfiguration.CreateMapper());

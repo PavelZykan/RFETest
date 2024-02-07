@@ -4,6 +4,9 @@ using RFETest.WebContracts;
 
 namespace RFETest.WebApi.Mapping
 {
+    /// <summary>
+    /// Automapper profile for mapping core classes to web contracts
+    /// </summary>
     public class WebProfile : Profile
     {
         public WebProfile()
