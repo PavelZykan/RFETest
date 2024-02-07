@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 namespace RFETest.WebApi.IntegrationTests
 {
     [TestClass]
-    public partial class ApiIntegrationTests
+    public partial class ApiIntegrationTests : IDisposable
     {
         private readonly HttpClient _client;
 
@@ -27,16 +27,21 @@ namespace RFETest.WebApi.IntegrationTests
             _client = app.CreateClient();
         }
 
+        public void Dispose()
+        {
+            _client.Dispose();
+        }
+
         [TestMethod]
         public async Task HappyPathIsOk()
         {
             var id = Guid.NewGuid().ToString();
 
-            await PostValue(id, "value to compare", true);
+            await PostBase64EncodedInput(id, "value to compare", true);
 
-            await PostValue(id, "value to compare", false);
+            await PostBase64EncodedInput(id, "value to compare", false);
 
-            var response = await GetDiff(id);
+            using var response = await GetDiff(id);
 
             response.EnsureSuccessStatusCode();
 
@@ -52,11 +57,11 @@ namespace RFETest.WebApi.IntegrationTests
         {
             var id = Guid.NewGuid().ToString();
 
-            await PostValue(id, "value to compare", true);
+            await PostBase64EncodedInput(id, "value to compare", true);
 
-            await PostValue(id, "value to compare very long", false);
+            await PostBase64EncodedInput(id, "value to compare very long", false);
 
-            var response = await GetDiff(id);
+            using var response = await GetDiff(id);
 
             response.EnsureSuccessStatusCode();
 
@@ -72,11 +77,11 @@ namespace RFETest.WebApi.IntegrationTests
         {
             var id = Guid.NewGuid().ToString();
 
-            await PostValue(id, "value to compare", true);
+            await PostBase64EncodedInput(id, "value to compare", true);
 
-            await PostValue(id, "value to dissect", false);
+            await PostBase64EncodedInput(id, "value to dissect", false);
 
-            var response = await GetDiff(id);
+            using var response = await GetDiff(id);
 
             response.EnsureSuccessStatusCode();
 
@@ -99,10 +104,10 @@ namespace RFETest.WebApi.IntegrationTests
 
             if (isLeft != null)
             {
-                await PostValue(id, "value to compare", isLeft.Value);
+                await PostBase64EncodedInput(id, "value to compare", isLeft.Value);
             }
 
-            var response = await GetDiff(id);
+            using var response = await GetDiff(id);
 
             Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
 
@@ -114,6 +119,16 @@ namespace RFETest.WebApi.IntegrationTests
                 case true: Assert.AreEqual(data.Detail, $"Right value for id '{id}' is missing"); break;
                 case false: Assert.AreEqual(data.Detail, $"Left value for id '{id}' is missing"); break;
             };
+        }
+
+        [TestMethod]
+        public async Task ValidationWorks()
+        {
+            var id = Guid.NewGuid().ToString();
+
+            var responseCode = await PostBase64EncodedInput(id, "", true, ensureSuccessStatusCode: false);
+
+            Assert.AreEqual(HttpStatusCode.BadRequest, responseCode);
         }
 
         private async Task<T> GetData<T>(HttpResponseMessage message)
@@ -130,7 +145,7 @@ namespace RFETest.WebApi.IntegrationTests
             return await _client.SendAsync(message);
         }
 
-        private async Task PostValue(string id, string value, bool left)
+        private async Task<HttpStatusCode> PostBase64EncodedInput(string id, string value, bool left, bool ensureSuccessStatusCode = true)
         {
             var type = left ? "left" : "right";
 
@@ -148,7 +163,12 @@ namespace RFETest.WebApi.IntegrationTests
 
             using var response = await _client.SendAsync(message);
 
-            response.EnsureSuccessStatusCode();
+            if (ensureSuccessStatusCode)
+            {
+                response.EnsureSuccessStatusCode();
+            }
+
+            return response.StatusCode;
         }
     }
 }
