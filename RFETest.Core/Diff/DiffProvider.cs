@@ -6,7 +6,7 @@ using System.Text;
 namespace RFETest.Core.Diff
 {
     /// <summary>
-    /// Compares values of the given comparison ID
+    /// Compares values for the given comparison ID
     /// </summary>
     public class DiffProvider : IDiffProvider
     {
@@ -21,7 +21,7 @@ namespace RFETest.Core.Diff
         {
             var values = await _diffValueStorage.GetValuesAsync(id);
 
-            // simple case sensitive comparison
+            // simple case-sensitive comparison
             if (values.Left == values.Right)
             {
                 return new DiffResult(EDiffResultType.Match);
